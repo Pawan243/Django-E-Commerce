@@ -153,22 +153,10 @@ def register(request):
                 user.save()
                 print('user created')
                 return redirect('/shop/login')
-<<<<<<< HEAD
 
         else:
             messages.info(request, 'password not maching')
             return redirect('/shop/register')
-
-        return HttpResponseRedirect('/shop')
-
-    else:
-        return render(request, 'shop/register.html')
-=======
-
-        else:
-            messages.info(request, 'password not maching')
-            return redirect('/shop/register')
->>>>>>> cb8a8525c10d825a735bf0a9a9e0513c411727bc
 
         return HttpResponseRedirect('/shop')
 
