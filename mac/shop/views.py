@@ -101,7 +101,7 @@ def checkout(request):
     return render(request, 'shop/checkout.html')
 
 def login(request):
-    if request.method== 'POST':
+    if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
 
@@ -114,14 +114,15 @@ def login(request):
             messages.info(request, 'Invalid credentials')
             return redirect('/shop/login')
 
+    else:
+        return render(request, 'shop/login.html')
 
-    else: 
-        return render(request, 'login.html')
 
 def logout(request):
 
     auth.logout(request)
     return redirect('/shop')
+
 
 def register(request):
     if request.method == "post":
@@ -131,29 +132,30 @@ def register(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
         email = request.POST['email']
-        
+
         if password1 == password2:
             if User.objects.filter(username=username).exists():
                 messages.info(request, 'Username Taken')
-                return redirect('shop/register')
+                return redirect('/shop/register')
 
             elif User.objects.filter(email=email).exists():
                 messages.info(request, 'email Taken')
-                return redirect('shop/register')
+                return redirect('/shop/register')
 
-            else:    
-                user = User.objects.create_user(first_name=first_name, last_name=last_name,username= username,  email=email,password=password1)
-                user.save();
+            else:
+                user = User.objects.create(
+                    first_name=first_name, last_name=last_name, username=username,  email=email, password=password1)
+                user.save()
                 print('user created')
-                return redirect('login')
-        
-        else: 
-            messages.info(request,'password not maching')
-            return redirect('register')
+                return redirect('/shop/login')
 
-        return  HttpResponseRedirect('/shop')
+        else:
+            messages.info(request, 'password not maching')
+            return redirect('/shop/register')
+
+        return HttpResponseRedirect('/shop')
 
     else:
-        return render(request,'register.html')
+        return render(request, 'shop/register.html')
 
 
