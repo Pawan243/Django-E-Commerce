@@ -12,6 +12,12 @@
 
 <body>
     <div class="login-clean">
+        <div>
+            {% for message in messages %}
+            <h3>{{message}}</h3>
+    
+            {% endfor %}
+        </div>
         <form method="post">
             {% csrf_token %}
             <h2 class="sr-only">Login Form</h2>
