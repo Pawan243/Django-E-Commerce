@@ -26,24 +26,28 @@
       <li class="nav-item active">
         <a class="nav-link" href="/shop">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
+      <li class="{% if nbar == 'AboutUs' %}active{% endif %}">
         <a class="nav-link" href="/shop/about">About Us</a>
       </li>
 
-      <li class="nav-item">
+      <li class="{% if nbar == 'tracker' %}active{% endif %}">
         <a class="nav-link" href="/shop/tracker">Tracker</a>
       </li>
 
-      <li class="nav-item">
+      <li class="{% if nbar == 'contact' %}active{% endif %}">
         <a class="nav-link" href="/shop/contact">Contact Us</a>
       </li>
-      <li class="nav-item">
+      <li class="{% if nbar == 'AboutUs' %}active{% endif %}">
         <a class="nav-link" href="/blog">Blog</a>
       </li> 
     </ul>
     <ul class="navbar-nav ml-auto">
       {% if user.is_authenticated %}
-      <li>Hello, {{user.first_name}}</li>
+      <div class="container text-center">
+        <li class="text-uppercase" style="color: rgb(0, 255, 55);"><b>Hello {{user.first_name}}</b></li>
+        <li class="text-uppercase" style="color: rgb(0, 255, 55);"><b>Welcome to My Awesome
+          Cart</b></li>
+      </div>
       <li class="nav-item active">
         <a class="nav-link" href="/shop/logout">logout</a>
       </li>
