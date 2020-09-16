@@ -34,8 +34,7 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'shop/about.html')
-
+    return render(request, 'shop/about.html' ,{'nbar':'AboutUs'})
 
 def contact(request):
     if request.method=="POST":
@@ -45,7 +44,7 @@ def contact(request):
         desc = request.POST.get('desc', '')
         contact = Contact(name=name, email=email, phone=phone, desc=desc)
         contact.save()
-    return render(request, 'shop/contact.html')
+    return render(request, 'shop/contact.html',{'nbar':'contact'})
 
 
 def tracker(request):
@@ -66,18 +65,18 @@ def tracker(request):
         except Exception as e:
             return HttpResponse('{}')
 
-    return render(request, 'shop/tracker.html')
+    return render(request, 'shop/tracker.html',{'nbar':'tracker'})
 
 
 def search(request):
-    return render(request, 'shop/search.html')
+    return render(request, 'shop/search.html',{'nbar':'search'})
 
 
 def products(request, myid):
 
     # Fetch the product using the id
     product = Product.objects.filter(id=myid)
-    return render(request, 'shop/prodView.html', {'product':product[0]})
+    return render(request, 'shop/prodView.html', {'product':product[0]},{'nbar':'products/<int:myid>'})
 
 
 def checkout(request):
@@ -98,7 +97,7 @@ def checkout(request):
         thank = True
         id = order.order_id
         return render(request, 'shop/checkout.html', {'thank':thank, 'id': id})
-    return render(request, 'shop/checkout.html')
+    return render(request, 'shop/checkout.html',{'nbar':'checkout'})
 
 def login(request):
     if request.method == 'POST':
@@ -115,7 +114,7 @@ def login(request):
             return redirect('/shop/login')
 
     else:
-        return render(request, 'shop/login.html')
+        return render(request, 'shop/login.html',{'nbar':'login'})
 
 
 def logout(request):
@@ -156,6 +155,6 @@ def register(request):
         return HttpResponseRedirect('/shop')
 
     else:
-        return render(request, 'shop/register.html')
+        return render(request, 'shop/register.html',{'nbar':'register'})
 
 
