@@ -10,6 +10,8 @@ This is a E-Commerce website built with django-python framwork.
 
 # Django E-commerce
 Django-ecommerce is an open-source ecommerce platform built on the Django Web Framework.
+
+![developer](https://img.shields.io/badge/Developed%20By%20%3A-Pawan%20Kumar-orange)
 ## Features Included
 - Custom Admin dashboard
 - Search Functionality
