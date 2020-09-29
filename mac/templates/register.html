@@ -4,18 +4,22 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Registration Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+    <title>My Awesome Cart -Registration</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'assets/css1/style.css' %}">
 </head>
 <body>
+    <div class="contaier">
+        <h2 class="text-center pt-5">Welcome to Registration</h2>
+    </div>
     <div class="registration-form">
         <div>
             {% for message in messages %}
-            <h3>{{message}}</h3>
-    
+            <script>
+                alert('{{message}}')
+            </script>
             {% endfor %}
         </div>
         <form method="post">
@@ -43,7 +47,8 @@
             </div>
             <div class="form-group">
                 <button type="submit" value="Submit" class="btn btn-block create-account">Create Account</button>
-            </div>
+            </div><p>if user is already exits?</p>
+            <a href="/accounts/login">Sign in</a>
         </form>
         <div class="social-media">
             <h5>Sign up with social media</h5>
