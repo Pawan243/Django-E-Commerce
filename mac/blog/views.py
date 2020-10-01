@@ -5,13 +5,14 @@ from .models import Contact, Blogpost
 # Create your views here.
 
 def index(request):
-    return render(request, 'blog/index.html')
+    myposts = Blogpost.objects.all()
+    print(myposts)
+    return render(request, 'blog/index.html', {'myposts': myposts})
 
 def blogpost(request, id):
     post = Blogpost.objects.filter(post_id = id)[0]
     print(post)
     return render(request, 'blog/blogpost.html', {'post':post})
-
 
 def about(request):
     return render(request, 'blog/about.html')
@@ -24,4 +25,4 @@ def contact(request):
         desc = request.POST.get('desc', '')
         contact = Contact(name=name, email=email, phone=phone, desc=desc)
         contact.save()
-    return render(request, 'blog/contact.html')
+    return render(request, 'blog/contact.html') 
