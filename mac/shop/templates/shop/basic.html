@@ -43,7 +43,11 @@
     </ul>
     <ul class="navbar-nav ml-auto">
       {% if user.is_authenticated %}
-      <li>Hello, {{user.first_name}}</li>
+      <div class="container text-center">
+        <li class="text-uppercase" style="color: rgb(247, 44, 213);font-family: 'Zilla Slab', serif;"><b>Hello {{user.first_name}}</b></li>
+        <li class="text-uppercase" style="color: rgb(0, 255, 55); font-family: 'Zilla Slab', serif;"><b>Welcome to My Awesome
+          Cart</b></li>
+      </div>
       <li class="nav-item active">
         <a class="nav-link" href="/shop/logout">logout</a>
       </li>
