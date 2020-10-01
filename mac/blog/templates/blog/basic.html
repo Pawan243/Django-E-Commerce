@@ -9,6 +9,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@1,500&display=swap" rel="stylesheet">
 
   <title>{% block title%} {% endblock %}</title>
   <style>
@@ -39,7 +40,7 @@
           <a class="nav-link" href="/blog/about">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/blog/blogpost">Blog Post</a>
+          <a class="nav-link" href="/blog/blogpost/">Blog Post</a>
         </li> 
         <li class="nav-item">
           <a class="nav-link" href="/blog/contact">Contact Us</a>
@@ -51,8 +52,8 @@
       <ul class="navbar-nav ml-auto">
         {% if user.is_authenticated %}
         <div class="container text-center">
-          <li class="text-uppercase" style="color: rgb(0, 255, 55);"><b>Hello {{user.first_name}}</b></li>
-          <li class="text-uppercase" style="color: rgb(0, 255, 55);"><b>Welcome to My Awesome
+          <li class="text-uppercase" style="color: rgb(247, 44, 213);font-family: 'Zilla Slab', serif;"><b>Hello {{user.first_name}}</b></li>
+          <li class="text-uppercase" style="color: rgb(0, 255, 55); font-family: 'Zilla Slab', serif;"><b>Welcome to My Awesome
             Cart</b></li>
         </div>
         <li class="nav-item active">
