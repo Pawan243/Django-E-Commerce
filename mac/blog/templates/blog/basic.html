@@ -21,7 +21,10 @@
       % endblock %
     }
   </style>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0"
+    nonce="jLoPgDzD"></script>
 </head>
+
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -49,9 +52,11 @@
       <ul class="navbar-nav ml-auto">
         {% if user.is_authenticated %}
         <div class="container text-center">
-          <li class="text-uppercase" style="color: rgb(247, 44, 213);font-family: 'Zilla Slab', serif;"><b>Hello {{user.first_name}}</b></li>
-          <li class="text-uppercase" style="color: rgb(0, 255, 55); font-family: 'Zilla Slab', serif;"><b>Welcome to My Awesome
-            Cart</b></li>
+          <li class="text-uppercase" style="color: rgb(247, 44, 213);font-family: 'Zilla Slab', serif;"><b>Hello
+              {{user.first_name}}</b></li>
+          <li class="text-uppercase" style="color: rgb(0, 255, 55); font-family: 'Zilla Slab', serif;"><b>Welcome to My
+              Awesome
+              Cart</b></li>
         </div>
         <li class="nav-item active">
           <a class="nav-link" href="/shop/logout">logout</a>
@@ -81,24 +86,24 @@ sagittis lacus vel augue laoreet rutrum faucibus.">
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
     integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
     crossorigin="anonymous"></script>
-    <script> 
-      $(document).on('click', '.nav-link.active', function() { 
-      var href = $(this).attr('href').substring(1); 
+  <script>
+    $(document).on('click', '.nav-link.active', function () {
+      var href = $(this).attr('href').substring(1);
       //alert(href);
-      $(this).removeClass('active');  
-      
+      $(this).removeClass('active');
+
       //$('.tab-pane[id="' + href + '"]').removeClass('active'); 
-      
-      }); 
-      $(document).mouseup(function(e) { 
-        var container = $("#tablist"); // target ID or class 
-        // if the target of the click isn't the container nor a descendant of the container 
-        if (!container.is(e.target) && container.has(e.target).length === 0) { 
-          // get Event here 
-          $('.active').removeClass('active'); 
-        } 
-      }); 
-        </script> 
+
+    });
+    $(document).mouseup(function (e) {
+      var container = $("#tablist"); // target ID or class 
+      // if the target of the click isn't the container nor a descendant of the container 
+      if (!container.is(e.target) && container.has(e.target).length === 0) {
+        // get Event here 
+        $('.active').removeClass('active');
+      }
+    }); 
+  </script>
   {% block js %} {% endblock %}
 </body>
 
