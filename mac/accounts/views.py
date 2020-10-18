@@ -16,10 +16,9 @@ def login(request):
             return redirect("/")
 
         else:
-            messages.info(request, 'Invalid credentials, Please try again.')
+            messages.info(request, 'Invalid credentials')
             return redirect('login')
-
-
+            
     else: 
         return render(request, 'login.html')
 
@@ -43,7 +42,7 @@ def register(request):
                 return redirect('register')
 
             elif User.objects.filter(email=email).exists():
-                messages.info(request, 'Email taken')
+                messages.info(request, 'email Taken')
                 return redirect('register')
 
             else:    
@@ -53,7 +52,7 @@ def register(request):
                 return redirect('login')
         
         else: 
-            messages.info(request,'password not maching, Please try again.')
+            messages.info(request,'password not maching')
             return redirect('register')
 
         return  HttpResponseRedirect('/')

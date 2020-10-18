@@ -23,20 +23,19 @@
     <h2>Step 2-Enter Address and Other details:</h2>
     <form method="POST" action="/shop/checkout/"> {% csrf_token %}
       <input type="hidden" name="itemsJson" id="itemsJson">
-      <input type="hidden" name="amount" id="amount">
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputname">Name</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="name" required>
+          <input type="text" class="form-control" id="name" name="name" placeholder="name">
         </div>
         <div class="form-group col-md-6">
           <label for="inputEmail4">Email</label>
-          <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Email">
         </div>
       </div>
       <div class="form-group">
         <label for="inputAddress">Address</label>
-        <input type="text" class="form-control" id="address1" name="address1" placeholder="1234 Main St" required>
+        <input type="text" class="form-control" id="address1" name="address1" placeholder="1234 Main St">
       </div>
       <div class="form-group">
         <label for="inputAddress2">Address Line 2</label>
@@ -45,22 +44,22 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="inputCity">City</label>
-          <input type="text" class="form-control" id="city" name="city" placeholder="Enter Your City" required>
+          <input type="text" class="form-control" id="city" name="city" placeholder="Enter Your City">
         </div>
         <div class="form-group col-md-4">
           <label for="inputState">State</label>
-          <input type="text" class="form-control" id="state" name="state" placeholder="Enter Your State" required>
+          <input type="text" class="form-control" id="state" name="state" placeholder="Enter Your State">
           </select>
         </div>
         <div class="form-group col-md-2">
-          <label for="inputZip">Zip Code</label>
-          <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Zip Code" required>
+          <label for="inputZip">Zip</label>_
+          <input type="text" class="form-control" id="zip_code" name="zip_code" placeholder="Zip Code">
         </div>
       </div>
       <div class="form-group">
         <div class="form-group">
           <label for="inputphone">Phone Number</label>
-          <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number" required>
+          <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number">
         </div>
       </div>
       <button type="submit" class="btn btn-primary">Place Order</button>
@@ -107,8 +106,6 @@
   localStorage.clear();
   document.location = "/shop";
   {% endif %}
-
-  $('#amount').val($('#totalPrice').html()) 
 </script>
 
 {% endblock %}

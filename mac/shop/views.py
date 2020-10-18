@@ -34,7 +34,8 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'shop/about.html' ,{'nbar':'AboutUs'})
+    return render(request, 'shop/about.html')
+
 
 def contact(request):
     if request.method=="POST":
@@ -44,7 +45,7 @@ def contact(request):
         desc = request.POST.get('desc', '')
         contact = Contact(name=name, email=email, phone=phone, desc=desc)
         contact.save()
-    return render(request, 'shop/contact.html',{'nbar':'contact'})
+    return render(request, 'shop/contact.html')
 
 
 def tracker(request):
@@ -65,11 +66,11 @@ def tracker(request):
         except Exception as e:
             return HttpResponse('{}')
 
-    return render(request, 'shop/tracker.html',{'nbar':'tracker'})
+    return render(request, 'shop/tracker.html')
 
 
 def search(request):
-    return render(request, 'shop/search.html',{'nbar':'search'})
+    return render(request, 'shop/search.html')
 
 
 def products(request, myid):
@@ -83,7 +84,6 @@ def checkout(request):
     if request.method=="POST":
         items_json = request.POST.get('itemsJson', '')
         name = request.POST.get('name', '')
-        amount = request.POST.get('amount', '')
         email = request.POST.get('email', '')
         address = request.POST.get('address1', '') + " " + request.POST.get('address2', '')
         city = request.POST.get('city', '')
@@ -91,7 +91,7 @@ def checkout(request):
         zip_code = request.POST.get('zip_code', '')
         phone = request.POST.get('phone', '')
         order = Orders(items_json=items_json, name=name, email=email, address=address, city=city,
-                       state=state, zip_code=zip_code, phone=phone, amount = amount)
+                       state=state, zip_code=zip_code, phone=phone)
         order.save()
         update = OrderUpdate(order_id=order.order_id, update_desc="The order has been placed")
         update.save()
@@ -101,7 +101,7 @@ def checkout(request):
     return render(request, 'shop/checkout.html')
 
 def login(request):
-    if request.method == 'POST':
+    if request.method== 'POST':
         username = request.POST['username']
         password = request.POST['password']
 
@@ -114,15 +114,14 @@ def login(request):
             messages.info(request, 'Invalid credentials')
             return redirect('/shop/login')
 
-    else:
-        return render(request, 'shop/login.html',{'nbar':'login'})
 
+    else: 
+        return render(request, 'login.html')
 
 def logout(request):
 
     auth.logout(request)
-    return redirect('/')
-
+    return redirect('/shop')
 
 def register(request):
     if request.method == "post":
@@ -132,30 +131,29 @@ def register(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
         email = request.POST['email']
-
+        
         if password1 == password2:
             if User.objects.filter(username=username).exists():
                 messages.info(request, 'Username Taken')
-                return redirect('/shop/register')
+                return redirect('shop/register')
 
             elif User.objects.filter(email=email).exists():
                 messages.info(request, 'email Taken')
-                return redirect('/shop/register')
+                return redirect('shop/register')
 
-            else:
-                user = User.objects.create(
-                    first_name=first_name, last_name=last_name, username=username,  email=email, password=password1)
-                user.save()
+            else:    
+                user = User.objects.create_user(first_name=first_name, last_name=last_name,username= username,  email=email,password=password1)
+                user.save();
                 print('user created')
-                return redirect('/shop/login')
+                return redirect('login')
+        
+        else: 
+            messages.info(request,'password not maching')
+            return redirect('register')
 
-        else:
-            messages.info(request, 'password not maching')
-            return redirect('/shop/register')
-
-        return HttpResponseRedirect('/shop')
+        return  HttpResponseRedirect('/shop')
 
     else:
-        return render(request, 'shop/register.html')
+        return render(request,'register.html')
 
 
